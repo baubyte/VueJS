@@ -1,0 +1,3 @@
+npm install -g (manera global) vue-cli
+Iniciar Proyecto          Paquete           Nombre Proyecto
+vue init                webpack-simple      02-Generador-Notas
