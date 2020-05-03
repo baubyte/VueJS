@@ -8,12 +8,48 @@
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-    <div id="listaCompras">
-        <!-- <h1>{{ header ? header : 'Bienvenidos' }}</h1> -->
-        <h1>{{ header.toLocaleUpperCase() }}</h1>
+    <div class="container">
+        <div id="listaCompras">
+            <!-- <h1>{{ header ? header : 'Bienvenidos' }}</h1> -->
+            <div class="header">
+                <h1>{{ header.toLocaleUpperCase() }}</h1>
+                <button v-if="estado === 'default'" class="btn btn-success"
+                    @click="cambiarEstado('add')">Agregar</button>
+                <button v-else class="btn btn-danger" @click="cambiarEstado('default')">Cancelar</button>
+            </div>
+            <div v-if="estado === 'add'">
+                <!-- Sentencia Larga V-ON -->
+                <!-- <input type="text" placeholder="Agregar Utiles" v-model="newUtil" v-on:keyup.enter="utiles.push(newUtil)">
+            <button class="btn btn-success " v-on:click="utiles.push(newUtil)">Agregar</button> -->
+                <!-- Sentencia Corta V-ON -->
+                <!-- <input type="text" placeholder="Agregar Utiles" v-model="newUtil" @keyup.enter="utiles.push(newUtil)">
+            <button class="btn btn-success " @click="utiles.push(newUtil)">Agregar</button> -->
+                <!-- Mismas Acciones Anteriores pero con Métodos -->
+                <input type="text" placeholder="Agregar Utiles" v-model="newUtil" @keyup.enter="guardarUtiles">
+                <!-- Interpolation para Propiedad Computada -->
+                <!-- <p>{{cantidadCaracteres}}/200</p> -->
+                <button class="btn btn-success " @click="guardarUtiles" v-bind:disabled="newUtil.length <= 3">Guardar</button>
+                <!-- Para Probar el Bind -->
+                <!-- <a v-bind:href="newUtil" target="_blank">Enlace Dinámico</a> -->
+                <!-- <a :href="newUtil" target="_blank">Enlace Dinámico</a> -->
+            </div>
+            <ul>
+                <!-- V-FOR Con Array -->
+                <!-- <li v-for="element in utiles" :class="{tachado : element.comprado}" @click="cambiarEstadoComprado(element)">
+                    {{element.util}}
+                </li> -->
+                <!-- V-FOR Con Propiedad Computada -->
+                <li v-for="element in listReverse" :class="{tachado : element.comprado}" @click="cambiarEstadoComprado(element)">
+                    {{element.util}}
+                </li>
+            </ul>
+            <!-- Condición para Cuando no Hay Utiles -->
+            <p v-if="utiles.length === 0">No Existen Elementos en la Lista</p>
+        </div>
     </div>
     <!-- Para DEV -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -24,7 +60,60 @@
         var app = new Vue({
             el: '#listaCompras',
             data: {
-                header: 'Listado de Útiles'
+                header: 'Listado de Útiles',
+                newUtil: '',
+                estado: 'default',
+                /**Trabajamos Como un Array*/
+                /*utiles: [
+                    // '10 Cuadernos',
+                    // '15 Lapices',
+                    // '10 Biromes'
+                ]*/
+                /**Trabajamos Como Objetos*/
+                utiles: [
+                    {
+                        util: '10 Cuadernos',
+                        comprado: true
+                    },
+                    {
+                        util: '15 Lapices',
+                        comprado: true
+                    },
+                    {
+                        util: '10 Biromes',
+                        comprado: false
+                    }
+                ]
+            },
+            computed:{
+                /*cantidadCaracteres: function () {
+                    return this.newUtil.length;
+                }*/
+                listReverse: function () {
+                    return this.utiles.slice(0).reverse();
+                }
+            },
+            methods: {
+                guardarUtiles: function () {
+                    /**Para el Uso del Array*/
+                    /**this.utiles.push(this.newUtil);*/
+                    /**Para los Objetos*/
+                    this.utiles.push({
+                            util:this.newUtil,
+                            comprado: false
+                        });
+                    /**Limpiamos*/
+                    this.newUtil = '';
+                },
+                cambiarEstado: function (newEstado) {
+                    /**Cambiamos el Estado*/
+                    this.estado = newEstado;
+                    /**Limpiamos*/
+                    this.newUtil = '';
+                },
+                cambiarEstadoComprado: function (util) {
+                    util.comprado = !util.comprado;
+                }
             }
         });
     </script>
