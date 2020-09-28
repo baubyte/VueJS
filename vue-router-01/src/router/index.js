@@ -6,6 +6,7 @@ import Contact from '../views/Contact.vue'
 import Users from '../views/Users.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
+import Productos from '../views/productos/Index.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -46,6 +47,11 @@ const routes = [{
     {
         path: '/registrarse',
         redirect: '/signup'
+    },
+    {
+        path: '/productos',
+        name: 'productos',
+        component: Productos
     }
 ]
 
