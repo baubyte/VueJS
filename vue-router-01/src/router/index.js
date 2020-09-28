@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Contact from '../views/Contact.vue'
+import Users from '../views/Users.vue'
+import Login from '../views/Login.vue'
+import Signup from '../views/Signup.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -22,6 +25,22 @@ const routes = [{
         path: '/contact',
         name: 'contact',
         component: Contact
+    },
+    /**Rutas con Parámetros */
+    {
+        path: '/users/:id',
+        name: 'users',
+        component: Users
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login
+    },
+    {
+        path: '/signup',
+        name: 'signup',
+        component: Signup
     }
 ]
 
