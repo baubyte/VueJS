@@ -7,6 +7,7 @@ import Users from '../views/Users.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import Productos from '../views/productos/Index.vue'
+import Detalle from '../views/productos/Detalle.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -52,6 +53,12 @@ const routes = [{
         path: '/productos',
         name: 'productos',
         component: Productos
+    },
+    /**Reiteración de Rutas */
+    {
+        path: '/producto-detalle',
+        name: 'producto-detalle',
+        component: Detalle
     }
 ]
 
