@@ -1,16 +1,32 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/contact">Contact</router-link> | 
-      <router-link to="/about">About</router-link> | 
-      <router-link to="/users">Users</router-link>
+    <div id="nav" class="container">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <router-link to="/" class="nav-link active">Home</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/contact" class="nav-link">Contact</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/about" class="nav-link">About</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/users" class="nav-link">Users</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link ter-link to="/login" class="nav-link">Login</router-link>
+        </li>
+      </ul>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
+/**Importamos Bootstrap "npm install bootstrap primero" */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+/*
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,4 +47,5 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+*/
 </style>

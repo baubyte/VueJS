@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>Informacion de Usuario</h1>
     <router-link :to="{ name:'users', params:{id:item}}" v-for="(item,index) of arrayUsers " :key="index">
         <button type="button" class="btn btn-success">{{item}}</button>

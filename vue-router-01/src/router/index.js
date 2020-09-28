@@ -41,6 +41,11 @@ const routes = [{
         path: '/signup',
         name: 'signup',
         component: Signup
+    },
+    /**Reiteración de Rutas */
+    {
+        path: '/registrarse',
+        redirect: '/signup'
     }
 ]
 
