@@ -44,7 +44,7 @@ const routes = [{
         name: 'signup',
         component: Signup
     },
-    /**Reiteración de Rutas */
+    /**Redireccion de Rutas */
     {
         path: '/registrarse',
         redirect: '/signup'
@@ -54,9 +54,9 @@ const routes = [{
         name: 'productos',
         component: Productos
     },
-    /**Reiteración de Rutas */
+     /**Rutas con Parámetros */
     {
-        path: '/producto-detalle',
+        path: '/producto-detalle/:id',
         name: 'producto-detalle',
         component: Detalle
     }
