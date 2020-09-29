@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <h1>Fromularios Con VUEJS</h1>
+  <div class="container">
+      <h1>Formularios Con VUEJS</h1>
   </div>
 </template>
 
