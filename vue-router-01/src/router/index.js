@@ -57,7 +57,7 @@ const routes = [{
      /**Rutas con Parámetros */
     {
         path: '/producto-detalle/:id',
-        name: 'producto-detalle',
+        name: 'producto',
         component: Detalle
     }
 ]
