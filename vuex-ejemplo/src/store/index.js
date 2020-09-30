@@ -7,11 +7,26 @@ export default new Vuex.Store({
   state: {
     msg:'Vuex Desde Cero.',
     nombre:'BAU',
-    apellido:'BYTE'
+    apellido:'BYTE',
+    amigos:[],
+    //amigo:null
   },
   mutations: {
+    addAmigo(state,amigo){
+      state.amigos =[amigo,...state.amigos]
+    },
+    delAmigo(state, index){
+      state.amigos.splice(index, 1);
+    }
   },
   actions: {
+    addAmigoAction(context, amigo){
+      context.commit('addAmigo', amigo);
+    },
+    delAmigoAction(context, index){
+      context.commit('delAmigo',index);
+
+    }
   },
   modules: {
   },
